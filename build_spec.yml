@@ -1,0 +1,15 @@
+version: 0.1
+component: build
+failImmediatelyOnError: true
+
+steps:
+  - type: Command
+    name: docker-build
+    command: |
+      ls -al
+      docker build -t iad.ocir.io/ociateam/login-widget-pipeline:latest idcs-authn-api-signin-app
+
+outputArtifacts:
+  - name: widget-image
+    type: DOCKER_IMAGE
+    location: iad.ocir.io/ociateam/login-widget-pipeline:latest
